@@ -1,6 +1,9 @@
 /**
  * XLog - a simple js log manager
  *
+ * version: 0.1
+ * author: Spacexion
+ *
  * @param {string} [logLevel=e] - The character corresponding to the limit level of logs (m,e,w,i,d,v)
  * @param {string}[msgPrefix=null] - Text put before any message log
  * @param {string} [msgTag=null] - Text put after prefixx
