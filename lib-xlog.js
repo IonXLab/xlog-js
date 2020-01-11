@@ -33,7 +33,7 @@ var XLog = function(logLevel, msgPrefix, msgTag, showDate, showTime, showMsgLeve
         if(showTime) {
             text += ""+pad(now.getHours())+separator+pad(now.getMinutes())+separator+pad(now.getSeconds())
         }
-        return ;
+        return text;
     };
 
     var _log = function(level, args) {
