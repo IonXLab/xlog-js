@@ -9,11 +9,12 @@
  * @param {string} [msgTag=null] - Text put after prefixx
  * @param {boolean=false} [showDate=false] - If a date part is added to the message
  * @param {boolean=false} [showTime=false] - If a time part is added to the message
+ * @param {boolean=false} [showMillitime=false] - If a milliseconds time part is added to the message
  * @param {boolean} [showMsgLevel=false] - If the log level character part is added to the message
  * @param {Object} [sides=['[','[']] - Array of two characters surrounding each part of the log message
  * @constructor
  */
-var XLog = function(logLevel, msgPrefix, msgTag, showDate, showTime, showMsgLevel, sides) {
+var XLog = function(logLevel, msgPrefix, msgTag, showDate, showTime, showMillitime, showMsgLevel, sides) {
 
     const _levels = {m: 0, e: 1, w: 2, i: 3, d: 4, v: 5};
 
@@ -23,7 +24,7 @@ var XLog = function(logLevel, msgPrefix, msgTag, showDate, showTime, showMsgLeve
 
     if(!sides || sides.length!==2) { sides = ['[',']']; }
 
-    const _getParsedDate = function(date, separator, showDate, showTime) {
+    const _getParsedDate = function(date, separator, showDate, showTime, showMillitime) {
         var pad = function(n) { return (n<10 ? "0"+n : n); };
         var now = (date ? date : new Date());
         var text = "";
@@ -33,6 +34,9 @@ var XLog = function(logLevel, msgPrefix, msgTag, showDate, showTime, showMsgLeve
         if(showTime) {
             text += ""+pad(now.getHours())+separator+pad(now.getMinutes())+separator+pad(now.getSeconds())
         }
+        if(showMillitime) {
+            text += ""+pad(now.getMilliseconds())
+        }
         return text;
     };
 
@@ -41,7 +45,7 @@ var XLog = function(logLevel, msgPrefix, msgTag, showDate, showTime, showMsgLeve
             if(_levels[level] <= _levels[logLevel]) {
                 var argsOut = [];
                 if(msgPrefix) { argsOut.push(sides[0]+msgPrefix+sides[1]); }
-                if(showDate || showTime) { argsOut.push(sides[0]+_getParsedDate(null, '', showDate, showTime)+sides[1]); }
+                if(showDate || showTime) { argsOut.push(sides[0]+_getParsedDate(null, '', showDate, showTime, showMillitime)+sides[1]); }
                 if(showMsgLevel) { argsOut.push(sides[0]+level+sides[1]); }
                 if(msgTag) { argsOut.push(sides[0]+msgTag+sides[1]); }
                 args.forEach(function(a, index) {
@@ -61,7 +65,7 @@ var XLog = function(logLevel, msgPrefix, msgTag, showDate, showTime, showMsgLeve
         }
     };
     this.levels = function() {
-      return _levels;
+        return _levels;
     };
     this.m = function(msg) {
         _log("m", Array.prototype.slice.call(arguments));
