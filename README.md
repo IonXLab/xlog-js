@@ -1,14 +1,17 @@
 # XLog
 
-XLog is a simple javascript log mgr.
+XLog is a simple javascript log manager.
 
 ```
 version: 0.1
 author: Spacexion
 ```
 
-It's an instantiable object with few parameters, for browser and server.
+There are two versions, an instantiable function and a static object.
 
+Works on browser and server.
+
+## Usage
 Create an instance of it, with desired optional parameters and then log messages with easy methods.
 
 There are 6 levels of log incrementally :
@@ -49,4 +52,4 @@ It should looks like :
 
 ### Disclaimer :
 
-It's just a simple log mgr...
+It's just a simple log manager...
