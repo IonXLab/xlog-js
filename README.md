@@ -3,11 +3,13 @@
 XLog is a simple javascript log manager.
 
 ```
-version: 0.1
 author: Spacexion
 ```
 
-There are two versions, an instantiable function and a static object.
+There are three versions:
+ - an instantiable function (legacy)
+ - a static object (legacy)
+ - an es6 version. (last)
 
 Works on browser and server.
 

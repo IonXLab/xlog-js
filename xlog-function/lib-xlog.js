@@ -1,7 +1,5 @@
 /**
- * XLog - a simple js log manager
- *
- * version: 0.1
+ * XLog is a simple log manager
  * author: Spacexion
  *
  * @param {string} [logLevel=e] - The character corresponding to the limit level of logs (m,e,w,i,d,v)

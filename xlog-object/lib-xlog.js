@@ -1,7 +1,5 @@
 /**
  * XLog is a simple logger
- *
- * version: 0.1
  * author: Spacexion
  *
  * @name XLog
