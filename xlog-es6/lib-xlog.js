@@ -62,7 +62,7 @@ function XLog() {
    */
   this.getLogger = function(tag) {
     if(!tag)
-      tag = Math.rand
+      tag = ""+Math.floor(Math.random()*10000);
     if(!loggers[tag])
       loggers[tag] = new XLogger(logLevel, tag);
     return loggers[tag];
